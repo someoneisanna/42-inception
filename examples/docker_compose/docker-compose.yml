@@ -1,0 +1,32 @@
+# This will run a web server and a redis server at the same time
+
+# Version should be the first line of the file and specifies the version of the
+# Compose file format being used
+version: '3'
+
+# The services section is the bulk of the Compose file and defines the containers
+# that will be started as part of the service
+services:
+  # The web service will run the nginx:alpine image
+  web:
+    # The image key specifies the image to use for the container
+    image: nginx:alpine
+    # The ports section defines the ports that will be bound between host and container
+    ports:
+      - "8080:80"
+    # The volumes section defines the volumes that will be mounted between host and container
+    volumes:
+      - ./html:/usr/share/nginx/html
+  # The redis service will run the redis:alpine image
+  redis:
+    # The image key specifies the image to use for the container
+    image: redis:alpine
+
+# To build and run the application, you can use the following command:
+# docker-compose up
+
+# OBS: the terminal will be locked while the application is running. To stop it press ctrl+c
+
+# You can now access the web server at http://localhost:8080
+
+
