@@ -1,0 +1,26 @@
+FROM		debian:bullseye
+
+EXPOSE		9000
+
+RUN			apt-get update \
+			&& apt-get install sudo \
+			&& apt-get install -y \
+				php-fpm \
+				php-mysql \
+				wget \
+				tar \
+			&& apt-get clean \
+			&& rm -rf /var/lib/apt/lists/*
+
+RUN			mkdir -p /var/www/
+
+RUN			wget -O /tmp/latest.tar.gz https://wordpress.org/latest.tar.gz \
+			&& tar -xvf /tmp/latest.tar.gz -C /var/www/ \
+			&& rm /tmp/latest.tar.gz
+
+COPY		files/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+
+COPY		files/setup.sh /tmp/
+RUN			chmod +x /tmp/setup.sh
+
+ENTRYPOINT ["/tmp/setup.sh"]

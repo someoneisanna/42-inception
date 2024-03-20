@@ -2,6 +2,11 @@
 
 set -e
 
+DB_NAME="database_example"
+DB_USERNAME="random"
+DB_PASSWORD="random"
+DB_TABLE="table_example"
+
 service mariadb start
 
 mysql -u root -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;"
