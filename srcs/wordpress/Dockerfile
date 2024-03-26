@@ -3,7 +3,6 @@ FROM		debian:bullseye
 EXPOSE		9000
 
 RUN			apt-get update \
-			&& apt-get install sudo \
 			&& apt-get install -y \
 				php-fpm \
 				php-mysql \
@@ -19,8 +18,9 @@ RUN			wget -O /tmp/latest.tar.gz https://wordpress.org/latest.tar.gz \
 			&& rm /tmp/latest.tar.gz
 
 COPY		files/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+COPY		files/wp-config.php /var/www/wordpress/wp-config.php
 
 COPY		files/setup.sh /tmp/
 RUN			chmod +x /tmp/setup.sh
 
-ENTRYPOINT ["/tmp/setup.sh"]
+ENTRYPOINT ["/tmp/setup.sh", "php-fpm7.4", "-F", "-R"]
