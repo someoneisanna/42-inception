@@ -6,6 +6,7 @@ RUN			apt-get update \
 			&& apt-get install -y \
 				php-fpm \
 				php-mysql \
+				mariadb-client \
 				wget \
 				tar \
 			&& apt-get clean \
