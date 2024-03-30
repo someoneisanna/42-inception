@@ -12,7 +12,7 @@ RUN apt-get update \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-COPY files/nginx.conf /etc/nginx/nginx.conf
+COPY conf/nginx.conf /etc/nginx/nginx.conf
 
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 		-keyout /etc/nginx/cert.key \

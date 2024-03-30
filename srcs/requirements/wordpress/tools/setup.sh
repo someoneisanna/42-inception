@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 7
+sleep 5
 
 service php7.4-fpm start
 

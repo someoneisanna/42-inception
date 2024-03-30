@@ -18,10 +18,10 @@ RUN			wget -O /tmp/latest.tar.gz https://wordpress.org/latest.tar.gz \
 			&& tar -xvf /tmp/latest.tar.gz -C /var/www/ \
 			&& rm /tmp/latest.tar.gz
 
-COPY		files/www.conf /etc/php/7.4/fpm/pool.d/www.conf
-COPY		files/wp-config.php /var/www/wordpress/wp-config.php
+COPY		conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+COPY		conf/wp-config.php /var/www/wordpress/wp-config.php
 
-COPY		files/setup.sh /tmp/
+COPY		tools/setup.sh /tmp/
 RUN			chmod +x /tmp/setup.sh
 
 ENTRYPOINT ["/tmp/setup.sh", "php-fpm7.4", "-F", "-R"]

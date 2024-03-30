@@ -1,7 +1,7 @@
 services:
   mariadb:
     container_name: mariadb
-    build: ./mariadb
+    build: ./requirements/mariadb
     expose:
       - "3306"
     volumes:
@@ -14,7 +14,7 @@ services:
 
   wordpress:
     container_name: wordpress
-    build: ./wordpress
+    build: ./requirements/wordpress
     expose:
       - "9000"
     volumes:
@@ -29,7 +29,7 @@ services:
 
   nginx:
     container_name: nginx
-    build: ./nginx
+    build: ./requirements/nginx
     ports:
       - "443:443"
     restart: on-failure
