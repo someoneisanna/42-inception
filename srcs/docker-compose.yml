@@ -1,4 +1,5 @@
 services:
+  
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb
@@ -32,6 +33,8 @@ services:
     build: ./requirements/nginx
     ports:
       - "443:443"
+    env_file:
+      - .env
     restart: on-failure
     networks:
       - inception
@@ -39,8 +42,20 @@ services:
       - wordpress
 
 volumes:
+
   mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ataboada/data/mariadb
+      o: bind
+
   wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ataboada/data/wordpress
+      o: bind
 
 networks:
   inception:
