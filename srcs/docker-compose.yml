@@ -19,7 +19,7 @@ services:
     expose:
       - "9000"
     volumes:
-      - wordpress_data:/var/www/html
+      - wordpress_data:/var/www/wordpress
     env_file:
       - .env
     restart: on-failure
@@ -59,3 +59,4 @@ volumes:
 
 networks:
   inception:
+    driver: bridge

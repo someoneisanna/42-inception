@@ -4,8 +4,8 @@ EXPOSE		9000
 
 RUN			apt-get update \
 			&& apt-get install -y \
-				php-fpm \
-				php-mysql \
+				php7.4-fpm \
+				php7.4-mysql \
 				mariadb-client \
 				wget \
 				tar \
@@ -18,10 +18,12 @@ RUN			wget -O /tmp/latest.tar.gz https://wordpress.org/latest.tar.gz \
 			&& tar -xvf /tmp/latest.tar.gz -C /var/www/ \
 			&& rm /tmp/latest.tar.gz
 
+RUN			chown -R www-data:www-data /var/www/wordpress
+
 COPY		conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY		conf/wp-config.php /var/www/wordpress/wp-config.php
 
 COPY		tools/setup.sh /tmp/
 RUN			chmod +x /tmp/setup.sh
 
-ENTRYPOINT ["/tmp/setup.sh", "php-fpm7.4", "-F", "-R"]
+ENTRYPOINT ["/tmp/setup.sh", "php-fpm7.4", "--nodaemonize"]
