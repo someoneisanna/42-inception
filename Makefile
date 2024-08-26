@@ -14,6 +14,7 @@ help:
 	@echo "Targets:"
 	@echo "  up         Build and start the containers"
 	@echo "  down       Stop and remove the containers"
+	@echo "  down_c     Stop and remove the conatiners, images and volumes"
 	@echo "  status     Show the status of the containers, images, volumes and networks"
 	@echo "  clean      Remove all the containers, images and volumes"
 	@echo "  prune      Cleans up the docker system"
@@ -25,6 +26,9 @@ up: mkdirs
 	@docker-compose -p $(NAME) -f $(DOCKER_COMPOSE_FILE) up --build
 
 down:
+	@docker-compose -p $(NAME) -f $(DOCKER_COMPOSE_FILE) down
+
+down_c:
 	@docker-compose -p $(NAME) -f $(DOCKER_COMPOSE_FILE) down
 	@docker rmi -f $$(docker images -q) || true
 	@docker volume rm $$(docker volume ls -q) || true
