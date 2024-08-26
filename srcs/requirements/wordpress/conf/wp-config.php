@@ -21,7 +21,16 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
 
 $table_prefix = 'wp_';
 
-define( 'WP_DEBUG', true );
+define('WP_DEBUG', true);
+
+#define( 'WP_DEBUG_LOG', true );
+#define( 'WP_DEBUG_DISPLAY', true );
+#define( 'SCRIPT_DEBUG', true );
+#define( 'WP_MEMORY_LIMIT', '256M' );
+#define( 'WP_DEFAULT_THEME', 'twentytwentyone' );
+
+#error_reporting(E_ALL);
+#ini_set('display_errors', 1);
 
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
