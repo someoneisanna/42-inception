@@ -55,10 +55,6 @@ clean:
 prune:
 	@sudo docker system prune -a --volumes
 
-mkdirs:
-	@sudo mkdir -p $(VOLUMES_FOLDER)/mariadb
-	@sudo mkdir -p $(VOLUMES_FOLDER)/wordpress
-
 nginx:
 	docker-compose -p $(NAME) -f $(DOCKER_COMPOSE_FILE) exec nginx bash
 
@@ -67,3 +63,7 @@ wordpress:
 
 mariadb:
 	docker-compose -p $(NAME) -f $(DOCKER_COMPOSE_FILE) exec mariadb bash
+
+mkdirs:
+	@sudo mkdir -p $(VOLUMES_FOLDER)/mariadb
+	@sudo mkdir -p $(VOLUMES_FOLDER)/wordpress
