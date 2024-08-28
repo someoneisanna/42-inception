@@ -1,5 +1,8 @@
 <?php
 
+# In this file, we will define the configuration of the WordPress database
+# For this, we will use the environment variables that we have defined in the docker-compose.yml file
+
 define( 'DB_NAME', getenv('DB_NAME') );
 define( 'DB_USER', getenv('DB_USER_NAME') );
 define( 'DB_PASSWORD', getenv('DB_USER_PASS') );
@@ -26,9 +29,6 @@ define('WP_DEBUG', true);
 #define( 'WP_DEBUG_LOG', true );
 #define( 'WP_DEBUG_DISPLAY', true );
 #define( 'SCRIPT_DEBUG', true );
-#define( 'WP_MEMORY_LIMIT', '256M' );
-#define( 'WP_DEFAULT_THEME', 'twentytwentyone' );
-
 #error_reporting(E_ALL);
 #ini_set('display_errors', 1);
 

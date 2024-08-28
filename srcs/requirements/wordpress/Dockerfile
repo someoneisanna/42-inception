@@ -1,7 +1,7 @@
 # Use the official Debian Bullseye image as the base image where MariaDB will be installed on.
 FROM		debian:bullseye
 
-# Tell docker which port the container listens on at runtime.
+# Tell docker which port the container will be listening on. This is informational and does not actually publish the port.
 EXPOSE		9000
 
 # Update the package list and install PHP and MariaDB client. We will then clean up the package list and remove the cache.

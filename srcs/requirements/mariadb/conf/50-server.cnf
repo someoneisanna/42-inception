@@ -12,7 +12,7 @@ lc-messages				= en_US
 skip-external-locking
 
 # This is the only change we made from the original file
-# It was necessary to allow the MariaDB server to accept connections from any IP address, not only the local machine
+# This was necessary to allow the MariaDB server to accept connections from any IP address, not only the local machine
 bind-address			= 0.0.0.0
 
 expire_logs_days		= 10
