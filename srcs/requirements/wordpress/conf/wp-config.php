@@ -1,7 +1,8 @@
 <?php
 
-# In this file, we will define the configuration of the WordPress database
-# For this, we will use the environment variables that we have defined in the docker-compose.yml file
+// WordPress Database Configuration
+// These settings are pulled from environment variables so that we can access 
+// the database with the correct credentials.
 
 define( 'DB_NAME', getenv('DB_NAME') );
 define( 'DB_USER', getenv('DB_USER_NAME') );
