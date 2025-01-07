@@ -37,6 +37,8 @@ services:
     build: ./requirements/nginx              # Path to the Dockerfile
     ports:                                   # Publish the ports to the host machine
       - "443:443"
+    volumes:
+      - wordpress_data:/var/www/wordpress
     env_file:                                # Load environment variables from a file
       - .env
     restart: on-failure                      # Restart the container if it fails

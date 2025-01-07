@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Wait for MySQL to be ready.
-# This is necessary because the MySQL container might not be immediately available.
+# Wait for mariadb to be ready.
+# This is necessary because the mariadb container might not be immediately available.
 sleep 5
 
 # Start PHP-FPM service.
